@@ -1,21 +1,35 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
-    min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+  min-height: 100vh;
 }
 
+/* same principle as flexbox layout: one container (parent) and many boxes (children) */
+
 .container {
-    display: grid;
+  min-height: 400px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* fractions of the viewport width occupied by each of the three columns */
+  grid-auto-rows: minmax(150px, auto); /* height of the rows will be 150px or more depending on min-height */
+  row-gap: 1rem;
+  column-gap: 1rem;
 }
 
 .box {
-    background-color: black;
-    color: white;
-    font-size: 2rem;
-    padding: 0.5rem;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+/* I use a pseudo-class to select a specific grid item */
+.box:first-child {
+  background-color: blue;
+  grid-column-start: 1;
+  grid-column-end: 3; /* the first box will span 2 columns out of 3 */
 }
