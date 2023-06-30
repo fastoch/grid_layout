@@ -32,4 +32,6 @@ body {
   background-color: blue;
   grid-column-start: 1;
   grid-column-end: 3; /* the first box will span 2 columns out of 3 */
+  grid-row-start: 1;
+  grid-row-end: 3; /* the first box will span 2 rows out of 3 */
 }
