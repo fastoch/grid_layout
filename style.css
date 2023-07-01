@@ -7,11 +7,38 @@
 body {
   font-family: 'Courier New', Courier, monospace;
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: 75px auto 75px;
+  grid-template-areas: 
+    "hd hd hd hd hd hd hd hd hd"
+    "mn mn mn mn mn mn mn sb sb"
+    "ft ft ft ft ft ft ft ft ft";
+    gap: 1rem;
 }
 
-/* same principle as flexbox layout: one container (parent) and many boxes (children) */
+.el {
+  background-color: rebeccapurple;
+  color: antiquewhite;
+  display: grid;
+  place-content: center;
+}
+
+.header {
+  grid-area: hd;
+}
+
+.sidebar {
+  grid-area: sb;
+  background-color: blue;
+}
+
+.footer {
+  grid-area: ft;
+}
 
 .container {
+  grid-area: mn;
   min-height: 400px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr; /* fractions of the viewport width occupied by each of the three columns */
@@ -30,8 +57,14 @@ body {
 /* I use a pseudo-class to select a specific grid item */
 .box:first-child {
   background-color: blue;
-  grid-column-start: 1;
-  grid-column-end: 3; /* the first box will span 2 columns out of 3 */
-  grid-row-start: 1;
-  grid-row-end: 3; /* the first box will span 2 rows out of 3 */
+  grid-column: 1/3; /* start/end: the first box will span 2 columns out of 3 */
+  grid-row: 1/3; /* start/end: the first box will span 2 rows out of 3 */
+  display: grid;
+  place-content: center; /* equivalent to align-content: center; + justify-content: center; */
+}
+
+.box:nth-child(2) {
+  background-color: purple;
+  grid-column: 1/4;
+  grid-row: 3/4;
 }
